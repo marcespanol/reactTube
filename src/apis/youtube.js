@@ -5,6 +5,6 @@ export default axios.create({
     params: {
         part: 'snipet',
         maxResults: 5,
-        key: 'AIzaSyAq6w4wrr98uQSc_qJPn2DQKAsL99ond-c'
+        key: '[key]'
     }
 });

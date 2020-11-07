@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SearchBar from './components/SearchBar.js'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -24,9 +26,14 @@ class App extends React.Component {
   handleSubmit = async (termFromSearchBar) => {
     const response = await youtube.get('/search', {
         params: {
-        q: termFromSearchBar
+          part: 'snippet',
+          maxResults: 5,
+          key: '[KEY]',
+          q: termFromSearchBar,
       }
     });
+
+    console.log(response);
 
     this.setState({ 
       videos: response.data.items,
@@ -41,8 +48,7 @@ class App extends React.Component {
         <Container style={{ border: '2px solid blue'}} fluid>
           <Row>
             <Col style={{ border: '2px solid cyan'}}>
-              <h1>Search bar</h1>
-              {/* <SearchBar handleSumbit={this.handleSubmit}/> */}
+              <SearchBar onSubmit={this.handleSubmit}/>
             </Col>
           </Row>
           <Row>

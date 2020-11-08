@@ -1,6 +1,7 @@
 import React from 'react';
 
-import SearchBar from './components/SearchBar.js'
+import SearchBar from './components/SearchBar.js';
+import VideoList from './components/VideoList.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
@@ -57,8 +58,7 @@ class App extends React.Component {
               {/* <VideoDetail video={selectedVideo}/> */}
             </Col>
             <Col xs={12} md={4} style={{ border: '2px solid pink'}}>
-              <h2>VideoList</h2>
-              {/* <VideoList videos={videos} handleVideoSelect={this.handleVideoSelect}/> */}
+              <VideoList videos={videos} handleVideoSelect={this.handleVideoSelect}/>
             </Col>
           </Row>
         </Container>

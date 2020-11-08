@@ -57,7 +57,7 @@ class App extends React.Component {
               <h2>VideoDetail</h2>
               {/* <VideoDetail video={selectedVideo}/> */}
             </Col>
-            <Col xs={12} md={4} style={{ border: '2px solid pink'}}>
+            <Col xs={12} md={4} style={{ border: '2px solid pink', padding: '0px' }}>
               <VideoList videos={videos} handleVideoSelect={this.handleVideoSelect}/>
             </Col>
           </Row>

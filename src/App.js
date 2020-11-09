@@ -2,6 +2,7 @@ import React from 'react';
 
 import SearchBar from './components/SearchBar.js';
 import VideoList from './components/VideoList.js';
+import VideoDetail from './components/VideoDetail.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
@@ -19,7 +20,7 @@ class App extends React.Component {
   }
 
   handleVideoSelect = (video) => {
-    this.ListeningStateChangedEvent({
+    this.setState({
       selectedVideo: video
     })
   }
@@ -29,12 +30,10 @@ class App extends React.Component {
         params: {
           part: 'snippet',
           maxResults: 5,
-          key: '[KEY]',
+          key: 'AIzaSyAq6w4wrr98uQSc_qJPn2DQKAsL99ond-c',
           q: termFromSearchBar,
       }
     });
-
-    console.log(response);
 
     this.setState({ 
       videos: response.data.items,
@@ -46,18 +45,17 @@ class App extends React.Component {
     const { selectedVideo, videos } = this.state;
     return (
       <div className="App">
-        <Container style={{ border: '2px solid blue'}} fluid>
+        <Container fluid>
           <Row>
-            <Col style={{ border: '2px solid cyan'}}>
+            <Col>
               <SearchBar onSubmit={this.handleSubmit}/>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={8} style={{ border: '2px solid yellowgreen'}}>
-              <h2>VideoDetail</h2>
-              {/* <VideoDetail video={selectedVideo}/> */}
+            <Col xs={12} md={8}>
+              <VideoDetail video={selectedVideo}/>
             </Col>
-            <Col xs={12} md={4} style={{ border: '2px solid pink', padding: '0px' }}>
+            <Col xs={12} md={4} style={{ padding: '0px' }}>
               <VideoList videos={videos} handleVideoSelect={this.handleVideoSelect}/>
             </Col>
           </Row>
